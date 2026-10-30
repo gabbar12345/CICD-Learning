@@ -30,5 +30,4 @@ jobs:
 
       - name: Scan for secrets
         run: |
-          # Audits the repo against the baseline file. Fails if new secrets are found.
-          detect-secrets-hook --baseline .detect-secrets.baseline $(git ls-files)
+          git ls-files -z | xargs -0 detect-secrets-hook
